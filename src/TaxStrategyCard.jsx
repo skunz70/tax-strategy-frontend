@@ -4,15 +4,16 @@ export default function TaxStrategyCard() {
   const [result, setResult] = useState(null);
 
   const handleRunRoth = async () => {
-    const response = await fetch("https://chatgpt-tax-planner.onrender.com/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        current_agi: 100000,
-        conversion_amount: 20000,
-        filing_status: "single",
-      }),
-    });
+   const response = await fetch("https://chatgpt-tax-planner.onrender.com/roth", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    current_agi: 100000,
+    conversion_amount: 20000,
+    filing_status: "single",
+  }),
+});
+
 
     const data = await response.json();
     setResult(data);
