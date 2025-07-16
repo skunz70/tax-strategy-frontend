@@ -14,8 +14,8 @@ function CapitalGainsCard() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          ordinary_income: parseFloat(income),
-          capital_gains: parseFloat(gains),
+          ordinary_income: parseFloat(income) || 0,
+          capital_gains: parseFloat(gains) || 0,
           filing_status: filingStatus,
         }),
       });
@@ -37,6 +37,7 @@ function CapitalGainsCard() {
           onChange={(e) => setIncome(e.target.value)}
           placeholder="Ordinary Income"
           className="w-full border p-2"
+          required
         />
         <input
           type="number"
@@ -44,6 +45,7 @@ function CapitalGainsCard() {
           onChange={(e) => setGains(e.target.value)}
           placeholder="Capital Gains"
           className="w-full border p-2"
+          required
         />
         <select
           value={filingStatus}
