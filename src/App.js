@@ -3,8 +3,8 @@ import TaxStrategyCard from "./TaxStrategyCard";
 import MultiYearRothCard from "./components/MultiYearRothCard";
 import CapitalGainsCard from "./components/CapitalGainsCard";
 import ScheduleCCard from "./components/ScheduleCCard";
-import RentalCard from "./components/RentalCard";
-import YearEndPlanningCard from "./components/YearEndPlanningCard";
+import RentalCard from "./components/RentalAnalysisCard";
+import YearEndPlanningCard from "./components/YearEndPlanningCard"; // You also missed this one
 
 function App() {
   return (
