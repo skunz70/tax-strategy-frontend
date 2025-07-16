@@ -1,6 +1,7 @@
 import React from "react";
 import TaxStrategyCard from "./TaxStrategyCard";
-import MultiYearRothCard from "./components/MultiYearRothCard"; // ✅ add this line
+import MultiYearRothCard from "./components/MultiYearRothCard";
+import CapitalGainsCard from "./components/CapitalGainsCard";
 
 function App() {
   return (
@@ -8,11 +9,13 @@ function App() {
       <h1 className="text-2xl font-bold mb-4 text-center">Tax Planner ROI Demo</h1>
       <TaxStrategyCard />
       <div className="mt-6">
-        <MultiYearRothCard />  {/* ✅ this renders your new card */}
+        <MultiYearRothCard />
+      </div>
+      <div className="mt-6">
+        <CapitalGainsCard />
       </div>
     </div>
   );
 }
-
 
 export default App;
