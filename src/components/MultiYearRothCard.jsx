@@ -24,9 +24,33 @@ function MultiYearRothCard() {
     }
   };
 
-  return (
-    <div className="strategy-card">
-      <h3>Multi-Year Roth Strategy</h3>
+ {response && response.projection && (
+  <table style={{ marginTop: "1rem", borderCollapse: "collapse", width: "100%" }}>
+    <thead>
+      <tr>
+        <th style={{ border: "1px solid #ccc", padding: "8px" }}>Year</th>
+        <th style={{ border: "1px solid #ccc", padding: "8px" }}>Original AGI</th>
+        <th style={{ border: "1px solid #ccc", padding: "8px" }}>Conversion</th>
+        <th style={{ border: "1px solid #ccc", padding: "8px" }}>New AGI</th>
+        <th style={{ border: "1px solid #ccc", padding: "8px" }}>Rate</th>
+        <th style={{ border: "1px solid #ccc", padding: "8px" }}>Bracket</th>
+      </tr>
+    </thead>
+    <tbody>
+      {response.projection.map((row, i) => (
+        <tr key={i}>
+          <td style={{ border: "1px solid #ccc", padding: "8px" }}>{row.year}</td>
+          <td style={{ border: "1px solid #ccc", padding: "8px" }}>${row.original_agi.toLocaleString()}</td>
+          <td style={{ border: "1px solid #ccc", padding: "8px" }}>${row.conversion_amount.toLocaleString()}</td>
+          <td style={{ border: "1px solid #ccc", padding: "8px" }}>${row.new_agi.toLocaleString()}</td>
+          <td style={{ border: "1px solid #ccc", padding: "8px" }}>{row.marginal_rate}</td>
+          <td style={{ border: "1px solid #ccc", padding: "8px" }}>{row.bracket}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+)}
+
       <button onClick={handleClick}>Run Projection</button>
       {response && (
         <pre style={{ whiteSpace: "pre-wrap" }}>{JSON.stringify(response, null, 2)}</pre>
