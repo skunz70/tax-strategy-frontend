@@ -29,38 +29,39 @@ function MultiYearRothCard() {
       <h3>Multi-Year Roth Strategy</h3>
       <button onClick={handleClick}>Run Projection</button>
 
-      {response && response.projection && (
+      {response?.projection && (
         <table style={{ marginTop: "1rem", borderCollapse: "collapse", width: "100%" }}>
           <thead>
             <tr>
-              <th style={{ border: "1px solid #ccc", padding: "8px" }}>Year</th>
-              <th style={{ border: "1px solid #ccc", padding: "8px" }}>Original AGI</th>
-              <th style={{ border: "1px solid #ccc", padding: "8px" }}>Conversion</th>
-              <th style={{ border: "1px solid #ccc", padding: "8px" }}>New AGI</th>
-              <th style={{ border: "1px solid #ccc", padding: "8px" }}>Rate</th>
-              <th style={{ border: "1px solid #ccc", padding: "8px" }}>Bracket</th>
+              <th style={cellStyle}>Year</th>
+              <th style={cellStyle}>Original AGI</th>
+              <th style={cellStyle}>Conversion</th>
+              <th style={cellStyle}>New AGI</th>
+              <th style={cellStyle}>Rate</th>
+              <th style={cellStyle}>Bracket</th>
             </tr>
           </thead>
           <tbody>
             {response.projection.map((row, i) => (
               <tr key={i}>
-                <td style={{ border: "1px solid #ccc", padding: "8px" }}>{row.year}</td>
-                <td style={{ border: "1px solid #ccc", padding: "8px" }}>${row.original_agi.toLocaleString()}</td>
-                <td style={{ border: "1px solid #ccc", padding: "8px" }}>${row.conversion_amount.toLocaleString()}</td>
-                <td style={{ border: "1px solid #ccc", padding: "8px" }}>${row.new_agi.toLocaleString()}</td>
-                <td style={{ border: "1px solid #ccc", padding: "8px" }}>{row.marginal_rate}</td>
-                <td style={{ border: "1px solid #ccc", padding: "8px" }}>{row.bracket}</td>
+                <td style={cellStyle}>{row.year}</td>
+                <td style={cellStyle}>${row.original_agi.toLocaleString()}</td>
+                <td style={cellStyle}>${row.conversion_amount.toLocaleString()}</td>
+                <td style={cellStyle}>${row.new_agi.toLocaleString()}</td>
+                <td style={cellStyle}>{row.marginal_rate}</td>
+                <td style={cellStyle}>{row.bracket}</td>
               </tr>
             ))}
           </tbody>
         </table>
       )}
-
-      {response && (
-        <pre style={{ whiteSpace: "pre-wrap", marginTop: "1rem" }}>{JSON.stringify(response, null, 2)}</pre>
-      )}
     </div>
   );
 }
+
+const cellStyle = {
+  border: "1px solid #ccc",
+  padding: "8px",
+};
 
 export default MultiYearRothCard;
